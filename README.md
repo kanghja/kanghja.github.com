@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## 欢迎来到我的博客！
 
 You can use the [editor on GitHub](https://github.com/kanghja/kanghja.github.com/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
@@ -10,6 +10,9 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 
 ```markdown
 Syntax highlighted code block
+#个人简历
+##个人信息
+###工作经历
 
 # Header 1
 ## Header 2
