@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+        <head>
+        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+        <meta charset="utf-8">
+        <title>如何自定义Github Pages的域名并使用HTTPS | kanghj</title>
+        <link rel="stylesheet" href="https://kanghja.github.io//styles/main.css">
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+        <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+        <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+         <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+         <script >hljs.initHighlightingOnLoad();</script>
+
+    </head>
+    <body>
+              <header class="header mdui-m-b-5">      
+            <div class="container  ">
+                <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2" style="animation-delay: 0.2s"><a href="https://kanghja.github.io/">kanghj</a></div>
+                <div class="mdui-text-color-white animated fadeInDown mdui-text-center  mdui-m-b-3" style="animation-delay: 0.4s">我问燕子你为啥来，燕子说：你管好你自己！</div>
+           
+            <nav id="nav" class="mdui-text-center animated fadeInDown" style="animation-delay: 0.6s">
+                   
+                            <li><a href="/">首页</a>
+                                <span class="nav-style top"></span>
+                                <span class="nav-style bottom"></span>
+                                <span class="nav-style left"></span>
+                                <span class="nav-style right"></span>
+                                </li>
+                    
+                            <li><a href="/archives">归档</a>
+                                <span class="nav-style top"></span>
+                                <span class="nav-style bottom"></span>
+                                <span class="nav-style left"></span>
+                                <span class="nav-style right"></span>
+                                </li>
+                    
+                            <li><a href="/tags">标签</a>
+                                <span class="nav-style top"></span>
+                                <span class="nav-style bottom"></span>
+                                <span class="nav-style left"></span>
+                                <span class="nav-style right"></span>
+                                </li>
+                    
+                            <li><a href="/post/about">关于</a>
+                                <span class="nav-style top"></span>
+                                <span class="nav-style bottom"></span>
+                                <span class="nav-style left"></span>
+                                <span class="nav-style right"></span>
+                                </li>
+                    
+                  </nav>
+                </div>
+        </header>
+        <div class="mdui-container ">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">如何自定义Github Pages的域名并使用HTTPS</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2021-09-14 14:31:53">2021-09-14 / 4 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>2018-07-24543<a href="https://www.sjlei.com/tags/Github/">Github </a><a href="https://www.sjlei.com/tags/Github-Pages/">Github Pages </a><a href="https://www.sjlei.com/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/">自定义 </a><a href="https://www.sjlei.com/tags/%E5%9F%9F%E5%90%8D/">域名 </a><a href="https://www.sjlei.com/tags/HTTPS/">HTTPS </a><a href="https://www.sjlei.com/tags/Hexo/">Hexo</a></p>
+<figure data-type="image" tabindex="1"><img src="https://img.sjlei.com/post/2018/7/24/1/cover.jpg" alt="img" loading="lazy"></figure>
+<ol>
+<li><a href="https://www.sjlei.com/p/56333/#%E5%89%8D%E8%A8%80">1. 前言</a></li>
+<li><a href="https://www.sjlei.com/p/56333/#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%87%86%E5%A4%87%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D">2. 第一步：准备自定义域名</a></li>
+<li><a href="https://www.sjlei.com/p/56333/#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D">3. 第二步：配置自定义域名</a></li>
+<li><a href="https://www.sjlei.com/p/56333/#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%8F%AF%E9%80%89%EF%BC%8C%E9%85%8D%E7%BD%AEHTTPS">4. 第三步：可选，配置HTTPS</a></li>
+<li><a href="https://www.sjlei.com/p/56333/#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%8F%AF%E9%80%89%EF%BC%8C%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8hexo-deploy%E5%91%BD%E4%BB%A4%E4%B9%8B%E5%90%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E5%A4%B1%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98">5. 第四步：可选，解决使用hexo deploy命令之后自定义域名失效的问题</a></li>
+<li><a href="https://www.sjlei.com/p/56333/#%E6%B3%A8%E6%84%8F%E5%95%A6">6. 注意啦</a></li>
+</ol>
+<h3 id="前言">前言</h3>
+<p>Github推出的Pages服务真的是太好用了，可以用到免费的空间，再加上Hexo就可以实现一个静态的博客系统了。想了解的可以去看<a href="https://www.sjlei.com/p/54267/">这篇文章</a>。<br>
+然而域名默认使用<code>username.github.io</code>，我尝试在自己的域名上加了一个<code>CNAME</code>，结果却报了404，所以看来想要自定义域名没那么简单。<br>
+然后去官网翻了半天文档，终于找到了这篇《<a href="https://help.github.com/articles/quick-start-setting-up-a-custom-domain/">Quick start: Setting up a custom domain</a>》文章，研究了半天终于研究出来了，现在分享给大家！</p>
+<h3 id="第一步准备自定义域名">第一步：准备自定义域名</h3>
+<p>如果你还没有域名，就去各大域名注册商注册一个吧</p>
+<h3 id="第二步配置自定义域名">第二步：配置自定义域名</h3>
+<ol>
+<li>去Github，跳转到你的<code>Pages</code>所在的<code>repository</code></li>
+<li>在你的<code>repository</code>下，单击<code>Settings</code><br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/1.png" alt="Settings" loading="lazy"></li>
+<li>向下翻阅，找到<code>GitHub Pages</code>下的<code>Custom domain</code></li>
+<li>在输入框中输入你的自定义域名，并点击<code>Save</code>，但并不是所有的域名都支持，要看支持的类型请参阅《<a href="https://help.github.com/articles/about-supported-custom-domains/">About supported custom domains</a>》<br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/2.png" alt="Custom domain" loading="lazy"></li>
+<li>在你的自定义域名上添加<code>CNAME</code>解析记录，解析到你的GitHub Pages默认域名下即可（如下图）<br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/11.png" alt="CNAME" loading="lazy"></li>
+<li>等待最多十分钟之后，你就可以直接通过自定义域名访问你的GitHub Pages页面了！</li>
+<li>**注意：**如果你使用了<code>Hexo</code>来部署你的博客，那么在使用<code>hexo deploy</code>命令之后这一步将会失效，解决方法请看第四步</li>
+</ol>
+<h3 id="第三步可选配置https">第三步：可选，配置HTTPS</h3>
+<p>到第二步基本上就算是完成了，但如果你想用<code>https</code>协议访问，而自己的域名没有SSL证书的话则会报 <strong>不安全的连接</strong><br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/3.png" alt="no ssl" loading="lazy"><br>
+所以这一步来讲讲怎么使用https访问，原文《<a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/">Securing your GitHub Pages site with HTTPS</a>》</p>
+<ol>
+<li>首先需要申请证书，我是在阿里云上注册的域名，所以这里讲一下如何在阿里云上申请SSL证书，其他注册商还需自行搜索相关资料</li>
+<li>进入管理控制台，找到域名列表，在想要申请的域名右侧点击<code>SSL证书</code><br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/4.jpg" alt="SSL证书" loading="lazy"></li>
+<li>然后选择“单域名免费证书”，输入你的自定义域名，点击确定。（当然如果你有钱想要买通配的我也不拦着XD）<br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/5.png" alt="SSL证书" loading="lazy"></li>
+<li>然后填写一堆资料以后，点击提交审核</li>
+<li>等待大概三分钟到十分钟左右的时间，证书状态会变成 <strong>已签发</strong><br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/6.png" alt="SSL证书" loading="lazy"></li>
+<li>但如果 <strong>审核失败</strong> 的话，则需要按照失败的原因进行下一步的操作了</li>
+<li>接下来就可以使用https协议访问你的站点啦<br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/9.png" alt="SSL证书" loading="lazy"></li>
+</ol>
+<p>但如果想要使用http的时候自动跳转到https怎么办呢？其实GitHub Pages是提供这一项服务的。<br>
+首先还是打开<code>repository</code>的<code>Settings</code>页面，向下翻阅，找到<code>GitHub Pages</code>下的<code>Enforce HTTPS</code>并且打上勾即可。<br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/7.png" alt="Enforce HTTPS" loading="lazy"><br>
+但注意，如果你的站点没有配置SSL证书，那么这个选项是灰色的，所以得实现了上面的7个步骤才可以！</p>
+<h3 id="第四步可选解决使用hexo-deploy命令之后自定义域名失效的问题">第四步：可选，解决使用<code>hexo deploy</code>命令之后自定义域名失效的问题</h3>
+<p>如果你使用了Hexo来部署你的博客，那么在使用<code>hexo deploy</code>命令之后第二步配置的自定义域名将会失效，原因是hexo会自动清空存储库，删除无关的文件。<br>
+解决方法：</p>
+<ol>
+<li>每次都在Settings页面中重新配置一下，很显然这种做法是不明智的</li>
+<li>在你的<code>source</code>目录下新建一个<code>CNAME</code>文件，注意CNAME全大写，里面就填上你的自定义域名即可<br>
+<img src="https://img.sjlei.com/post/2018/7/24/1/10.png" alt="CNAME" loading="lazy"></li>
+</ol>
+<h3 id="注意啦">注意啦</h3>
+<p>如果你在执行以上步骤的时候，没有达到预期的效果，不要着急，按照缓存这尿性，<strong>完全关了浏览器并多等一会就好了</strong>，如果等了十几分钟还不好，就要看看操作上是否有失误的地方了~</p>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://kanghja.github.io/post/github-pages-da-jian-jiao-cheng/">GitHub Pages 搭建教程</a></div></div>
+                                        
+
+                                        
+                                        <div class="mdui-col"></div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+                                     <script src="https://kanghja.github.io//media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                                </article>
+
+                                    
+                        </div>
+                      </div>
+    
+                
+
+              </div>
+                    <footer class="footer mdui-m-t-5 mdui-text-center">
+               <nav class="social-links">
+                      <ul>
+                      
+                      
+                           
+                      
+                           
+                      
+                           
+                      
+                           
+                      
+                           
+                      
+                           
+                      
+                           
+                      
+                           
+                      
+                           
+                      
+                           
+                      
+                           
+                      
+                           
+                      </ul>
+                    </nav>
+                    <div class="copyright">
+                      <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br/> Theme <a href="https://github.com/alterfang/gridea-theme-song/" target="_blank"  title="宋"  >Song</a> by <a href="https://shanbu.fun/" target="_blank"  title="山卜方" >shanbufun</a> </p>
+                  </div>
+                  
+              </footer>
+    </body>
+</html>
